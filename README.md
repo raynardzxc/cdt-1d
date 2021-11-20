@@ -24,16 +24,20 @@ python main.py
 </p>
 
 ## Controls
-1. The game begins with snake of length 3 waiting for user input
+1. The game begins with ...
 2. Keyboard Up, Down, Right, and Left are used to navigate
 3. The result of the game is displayed at the end of the game
 4. Click anywhere on the result screen to play again
 
 
 ## Members
-Chai Yu Cheng, Raynard (1003436) //
-Chong Wen Xuan Darryl (1005890) //
-Lim Ho Tong Malcom (1005953) //
-Jaden Tay Jingyan (1005992) //
+Chai Yu Cheng, Raynard (1003436)
+
+Chong Wen Xuan Darryl (1005890)
+
+Lim Ho Tong Malcom (1005953)
+
+Jaden Tay Jingyan (1005992)
+
 Haritha Shraeya Rajasekar (1006278)
 
