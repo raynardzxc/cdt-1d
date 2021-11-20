@@ -31,9 +31,9 @@ python main.py
 
 
 ## Members
-Chai Yu Cheng, Raynard (1003436)
-Chong Wen Xuan Darryl (1005890)
-Lim Ho Tong Malcom (1005953)
-Jaden Tay Jingyan (1005992)
+Chai Yu Cheng, Raynard (1003436) //
+Chong Wen Xuan Darryl (1005890) //
+Lim Ho Tong Malcom (1005953) //
+Jaden Tay Jingyan (1005992) //
 Haritha Shraeya Rajasekar (1006278)
 
