@@ -40,11 +40,25 @@ def next_turn(snake, food, poison):     ### HARITHA
      pass
 
 def change_direction(new_direction):    ### DARRYL
-     pass
+    
+    if new_direction == 'left' and direction != 'right':
+          direction = new_direction
      
-def check_collision(snake):   ### DARRYL
-    pass
+     elif new_direction == 'right' and direction != 'left':
+          direction = new_direction
 
+     elif new_direction == 'up' and direction != 'down':
+          direction = new_direction
+
+     elif new_direction == 'down' and direction != 'up':
+          direction = new_direction
+    
+def check_collision(snake):   ### DARRYL
+    
+    for i in snake.coordinates[1:]:
+        if snake.coordinates[0] == snake.coordinates[i]:
+            return True
+    
 def game_over(): ### JADEN
      print('gg')
      
