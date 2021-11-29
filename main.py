@@ -45,7 +45,8 @@ def check_collision(snake):   ### DARRYL
      pass
 
 def game_over(): ### JADEN
-     pass
+     print('gg')
+     
 
 def play_again():   ### JADEN
      pass
