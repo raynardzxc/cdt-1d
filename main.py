@@ -36,6 +36,7 @@ def initialize_board(canvas): ### RAYNARD
                   )
 
 def next_turn(snake, food, poison):     ### HARITHA
+     print("hello")
      pass
 
 def change_direction(new_direction):    ### DARRYL
