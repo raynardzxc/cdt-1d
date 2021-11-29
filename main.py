@@ -42,7 +42,7 @@ def change_direction(new_direction):    ### DARRYL
      pass
      
 def check_collision(snake):   ### DARRYL
-     pass
+     print("candice nuts fit in your mouth!!")
 
 def game_over(): ### JADEN
      print('gg')
