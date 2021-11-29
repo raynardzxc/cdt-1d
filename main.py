@@ -40,17 +40,11 @@ def next_turn(snake, food, poison):     ### HARITHA
      pass
 
 def change_direction(new_direction):    ### DARRYL
-    
     if new_direction == 'left' and direction != 'right':
           direction = new_direction
      
-<<<<<<< HEAD
      elif new_direction == 'right' and direction != 'left':
           direction = new_direction
-=======
-def check_collision(snake):   ### DARRYL
-    print("Bruh")
->>>>>>> dev
 
      elif new_direction == 'up' and direction != 'down':
           direction = new_direction
