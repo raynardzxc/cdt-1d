@@ -63,13 +63,9 @@ def check_collision(snake):   ### DARRYL
 
     for j in range(len(snake.coordinates[0:])):
 
-        if snake.coordinates[j][0] > ROWS or snake.coordinates[j][0] < 0:
+        if snake.coordinates[j][0] > ROWS or snake.coordinates[j][0] < 0 or snake.coordinates[j][1] > COLS or snake.coordinates[j][1] < 0:
 
-            return True     ### Reading if the snake exceeds the board's row, the snake will collide
-
-        elif snake.coordinates[j][1] > COLUMNS or snake.coordinates[j][1] < 0:
-
-            return True     ### Reading if the snake exceeds the board's column, the snake will collide
+            return True     ### Reading if the snake exceeds the board's row or column, the snake will collide
 
 def game_over(): ### JADEN
      print('gg')
