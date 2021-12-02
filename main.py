@@ -1,6 +1,10 @@
 from tkinter import *
 import random
 
+# -------------------------------------------------
+# Global Constants
+# -------------------------------------------------
+
 GAME_WIDTH = 700
 GAME_HEIGHT = 700
 SPACE_SIZE = 50
@@ -10,10 +14,13 @@ COLS = int(GAME_WIDTH/SPACE_SIZE)
 
 SPEED = 150
 BODY_PARTS = 3
-SNAKE_COLOR = '#000000'
-FOOD_COLOR ='#00FF00'
-POISON_COLOR = "#FFFF00"
-BG_COLOR = '#FFFFFF'
+SNAKE_COLOR = '#ADC2A9'
+SNAKE_OUTLINE_COLOR = '#125C13'
+GREEN_COLOR ='#9AE66E'
+DARK_GREEN_COLOR = '#105652'
+YELLOW_COLOR = "#FBF46D"
+ORANGE_COLOR = '#FF4848'
+BG_COLOR = '#F9F3DF'
 TEXT_COLOR = "#7BC043"
 
 class MakanTime:
@@ -23,10 +30,7 @@ class MakanTime:
      def __init__(self):
           self.window = Tk()
           self.window.title("Makan Time")
-          self.window.resizable(False, False)
-          self.canvas = Canvas(self.window, bg=BG_COLOR, height=GAME_HEIGHT, width=GAME_WIDTH)
-          self.canvas.pack()
-          
+
           # ## get game dimensions
           # window_width = self.window.winfo_width()
           # window_height = self.window.winfo_height()
@@ -41,6 +45,13 @@ class MakanTime:
 
           # ## set game window
           # self.window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+
+          self.window.resizable(False, False)
+
+          self.canvas = Canvas(self.window, bg=BG_COLOR, height=GAME_HEIGHT, width=GAME_WIDTH)
+          self.canvas.pack()
+          
+          
           
           ## Binding User Input
           self.window.bind("<Key>", self.key_input)
@@ -108,7 +119,7 @@ class MakanTime:
      def display_gameover(self):
           score = len(self.snake)
           self.canvas.delete("all")
-          score_text = "Score: \n"
+          score_text = "Score:\n"
 
           self.canvas.create_text(
                GAME_WIDTH/2,
@@ -140,7 +151,7 @@ class MakanTime:
           x = self.food_cell[0] * SPACE_SIZE
           y = self.food_cell[1] * SPACE_SIZE
           self.food_obj = self.canvas.create_oval(
-               x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=FOOD_COLOR, outline=SNAKE_COLOR, tag="food"
+               x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=GREEN_COLOR, outline=DARK_GREEN_COLOR, width=5, tag="food"
           )
 
      def place_poison(self):
@@ -149,7 +160,7 @@ class MakanTime:
           x = self.poison_cell[0] * SPACE_SIZE
           y = self.poison_cell[1] * SPACE_SIZE
           self.poison_obj = self.canvas.create_rectangle(
-               x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=POISON_COLOR, outline=SNAKE_COLOR, tag="poison"
+               x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=YELLOW_COLOR, outline=ORANGE_COLOR, width=5, tag="poison"
           )
 
      def display_snake(self, mode=""):
@@ -161,7 +172,7 @@ class MakanTime:
                     y = cell[1] * SPACE_SIZE
                     self.snake_objects.append(
                          self.canvas.create_rectangle(
-                              x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=SNAKE_COLOR, tag="body"
+                              x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=SNAKE_COLOR, outline=SNAKE_OUTLINE_COLOR, width=5, tag="body"
                          )
                     )
           else:
@@ -170,7 +181,7 @@ class MakanTime:
                y = cell[1] * SPACE_SIZE
                self.snake_objects.append(
                          self.canvas.create_rectangle(
-                              x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=SNAKE_COLOR, tag="head"
+                              x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=SNAKE_COLOR, outline=SNAKE_OUTLINE_COLOR, width=5, tag="head"
                          )
                     )
                if self.snake[0] == self.old_food_cell:
@@ -181,14 +192,13 @@ class MakanTime:
                     y = tail[1] * SPACE_SIZE
                     self.snake_objects.append(
                          self.canvas.create_rectangle(
-                              x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=SNAKE_COLOR, outline=FOOD_COLOR, tag="head"
+                              x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=SNAKE_COLOR, outline=SNAKE_OUTLINE_COLOR, width=5, tag="head"
                          )
                     )
                elif self.snake[0] == self.old_poison_cell:
                     self.canvas.delete(self.snake_objects.pop(0))
 
                self.window.update()
-
 
      # -------------------------------------------------
      # Game Logic Functions
