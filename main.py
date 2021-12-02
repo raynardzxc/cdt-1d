@@ -55,10 +55,22 @@ def change_direction(new_direction):    ### DARRYL
     
 def check_collision(snake):   ### DARRYL
 
-    for i in snake.coordinates[1:]:
+    for i in range(len(snake.coordinates[1:])):
+
         if snake.coordinates[0] == snake.coordinates[i]:
-            return True
-    
+
+            return True                ### Reading the rest of the snake body to see if the snake collided with its body
+
+    for j in range(len(snake.coordinates[0:])):
+
+        if snake.coordinates[j][0] > ROWS or snake.coordinates[j][0] < 0:
+
+            return True     ### Reading if the snake exceeds the board's row, the snake will collide
+
+        elif snake.coordinates[j][1] > COLUMNS or snake.coordinates[j][1] < 0:
+
+            return True     ### Reading if the snake exceeds the board's column, the snake will collide
+
 def game_over(): ### JADEN
      print('gg')
      
