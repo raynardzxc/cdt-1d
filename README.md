@@ -11,6 +11,8 @@ The game ends when either the snake hits the borders of the game, eats itself, o
 
 Additionally, just like how it becomes increasingly harder to maintain a healthy diet, the game also becomes harder as the snake consumes more vegetables. Walls will be spawned everytime the snake eats a vegetable and it will be game over once the snake collides with a wall.
 
+Children in particular love to play games, thus inculcating good eating habits via game is an effective way to do so. Furthermore, young children in particular are especially impressionable, thus making it easier to sow the idea of eating one's veggies to grow big and strong.
+
 This game is also suitable for people of any age group as it can be an enjoyable way to train their reflexes.
 
 ## Installing Makan-Time:
@@ -106,7 +108,7 @@ description
 
 `def place_wall()`
 
-description
+This function displays a wall randomly on the canvas as the game progresses. The function takes into account the list of unoccupied cells and randomly chooses one of the cells to spawn the wall. The location of the new wall spawned will then be removed from the list of unoccupied cells.
 
 ---
 
@@ -157,19 +159,19 @@ For 6, the snake will just continue to the next step/frame.
 
 `def check_if_key_valid()`
 
-description
+This function ensures that the snake will change to move in a possible direction (either perpendicularly left or right from its current heading direction), when the correct button is pressed to change the direction of the snake.
 
 ---
 
 `def mouse_input()`
 
-description
+When the player clicks the left-mouse button, the game will restart from the beginning.
 
 ---
 
 `def key_input()`
 
-description
+This function gives the player the ability to move the snake around. To start the game, the user must press either the down or right arrow key. Up key is not possible as it is a forbidden action our code has took into account to ensure the snake would not immediately eat itself. The left arrow key is not advised to be pressed to start the game as it will cause the snake to crash into the wall, thus ending the game.
 
 ---
 
