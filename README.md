@@ -108,7 +108,19 @@ description
 
 `def display_snake()`
 
-description
+This function displays the snake on the canvas based on different situations.
+1. Initilisation
+2. Eat Food
+3. Eat Poison
+4. None of the above
+
+For 1, the function generates squares to the snake object based on the length of the initial snake list.
+
+For 2, the function will insert a new item at the tail of the snake list as well as generate a new square for the snake object.
+
+For 3, The function will delete the tail from the snake object.
+
+For 4, the function will remove the tail and add a new head in the direction of movement of the snake. This is to ensure that the snake does not keep growing if it is not eating anything.
 
 ---
 
@@ -123,12 +135,15 @@ Within the function, there are also checks for the different situations the snak
 3. Hitting a wall
 4. Hitting the border
 5. Eating itself
+6. None of the above
 
 For 1, the food object will be deleted and a new one will be spawned along with a new wall while the snake grows in length.
 
 For 2, the poison object will be deleted and a new one will be spawned while the snake is reduced in length. If the length of the snake is = 0, it will be game over.
 
 For 3, 4 and 5, it results in game over.
+
+For 6, the snake will just continue to the next step/frame.
 
 ---
 
