@@ -1,6 +1,6 @@
 # Makan-Time
 
-This repository contains the code for the python implmentation the Makan Time game. This game was created for the 1D compoenent of the Computational Thinking for Design course at the Singapore University of Technology and Design.
+This repository contains the code for the python implmentation the Makan Time game. This game was created for the 1D component of the Computational Thinking for Design course at the Singapore University of Technology and Design.
 
 ## About Makan-Time:
 This game is a spin off from the traditional Snake-And-Apple game aimed at encouraging young children to eat their vegetables while discouraging them from snacking on unhealthy food.

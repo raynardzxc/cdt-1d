@@ -171,7 +171,7 @@ class MakanTime:
 
      ## JADEN
      def place_wall(self):
-          unoccupied_cells = set(self.board) - set(self.snake) - set(self.old_food_cell) - set(self.previous_wall_cells)
+          unoccupied_cells = set(self.board) - set(self.snake) - set(self.old_food_cell) - set(self.old_poison_cell) - set(self.previous_wall_cells)
           self.wall_cell = random.choice(list(unoccupied_cells))
           x = self.wall_cell[0] * SPACE_SIZE
           y = self.wall_cell[1] * SPACE_SIZE
