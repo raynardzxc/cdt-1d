@@ -35,7 +35,17 @@ python main.py
 3. The result of the game is displayed at the end of the game.
 4. Click anywhere on the result screen to play again.
 
+**##Creating of random food location**
+1. Create the list of unoccupied spaces in the grid by removing coordinates of the snake, poison and walls 
+2. chose a random index in the list of unoccupied spaces and assign it to the food cell
+3. extract the X and Y positions from the randomized index from the unoccupied spaces list
+4. create an oval shape using canvas with green colour to represents the vegetables in the game with a dark green outline at the randomized X and Y coordinates with and high stretching to 5 units.
 
+**##Creating of random poison location**
+6. Create the list of unoccupied spaces in the grid by removing coordinates of the snake, food and walls 
+7. chose a random index in the list of unoccupied spaces and assign it to the food cell
+8. extract the X and Y positions from the randomized index from the unoccupied spaces list
+9. create an rectangle shape using canvas with yellow colour to represents the unhealthy in the game with a orange outline at the randomized X and Y coordinates with the with of with and high stretching to 5 units.
 ## Members
 Chai Yu Cheng, Raynard (1003436)
 
