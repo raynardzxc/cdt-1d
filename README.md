@@ -48,6 +48,9 @@ The functions within the game are split into 4 categories.
 3. Logic Function
 4. Input Functions
 
+---
+---
+
 ### Initialisation Functions
 
 `def __init__()`
@@ -78,6 +81,7 @@ description
 
 description
 
+---
 ---
 
 ### Display Functions
@@ -123,6 +127,7 @@ For 3, The function will delete the tail from the snake object.
 For 4, the function will remove the tail and add a new head in the direction of movement of the snake. This is to ensure that the snake does not keep growing if it is not eating anything.
 
 ---
+---
 
 ### Logic Function
 
@@ -145,6 +150,7 @@ For 3, 4 and 5, it results in game over.
 
 For 6, the snake will just continue to the next step/frame.
 
+---
 ---
 
 ### Input Functions
