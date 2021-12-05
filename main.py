@@ -166,8 +166,7 @@ class MakanTime:
           x = self.poison_cell[0] * SPACE_SIZE
           y = self.poison_cell[1] * SPACE_SIZE
           self.poison_obj = self.canvas.create_rectangle(
-               x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=YELLOW_COLOR, outline=ORANGE_COLOR, width=5, tag="poison"
-          )
+               x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=YELLOW_COLOR, outline=ORANGE_COLOR, width=5, tag="poison")
 
      ## JADEN
      def place_wall(self):
@@ -176,8 +175,7 @@ class MakanTime:
           x = self.wall_cell[0] * SPACE_SIZE
           y = self.wall_cell[1] * SPACE_SIZE
           self.wall_obj = self.canvas.create_rectangle(
-               x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=BLACK_COLOR, outline=BLACK_COLOR, width=5, tag="wall"
-          )
+               x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=BLACK_COLOR, outline=BLACK_COLOR, width=5, tag="wall")
           self.previous_wall_cells.append(self.wall_cell)
      
      # RAYNARD
