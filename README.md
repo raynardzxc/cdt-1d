@@ -46,6 +46,7 @@ python main.py
 2. chose a random index in the list of unoccupied spaces and assign it to the food cell
 3. extract the X and Y positions from the randomized index from the unoccupied spaces list
 4. create an rectangle shape using canvas with yellow colour to represents the unhealthy in the game with a orange outline at the randomized X and Y coordinates with the with of with and high stretching to 5 units.
+
 ## Members
 Chai Yu Cheng, Raynard (1003436)
 
