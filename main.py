@@ -430,26 +430,41 @@ class MakanTime:
             
             ## Removing the food object from the board
             self.canvas.delete(self.food_obj)
+            
+            ## Respawning the food again in some other place
             self.place_food()
-
+            
+            ## If the snake ate the food, it is set such that there is a 50% chance a wall will spawn
             if random.choice([0,1])==1:
                     self.place_wall()
             else:
                 pass
-
+            
+            ## Displaying the final body of the snake after eating food
             self.display_snake()
-
+        
+        ## Process of eating poison
         elif head == self.poison_cell:
             
-            # eat poison
+            # Snake in the midst of eating poison
             self.old_poison_cell = self.poison_cell
+            
+            ## Removing the poison object from the board
             self.canvas.delete(self.poison_obj)
+            
+            ## Respawning the poison in some other place
             self.place_poison()
+            
+            ## Display the final body of the snake after eating poison
             self.display_snake()
         
-        
+        ## If the snake isn't eating anything, the snake will just move to the intended direction by the player
         else:
+            
+            ## Player input of direction
             self.heading = key
+            
+            ## Displaying the snake after player input
             self.display_snake()
 
     # -------------------------------------------------
@@ -457,33 +472,45 @@ class MakanTime:
     # -------------------------------------------------
 
     # JADEN
+    
+    ## Checking if the key input by the player is valid or not
     def check_if_key_valid(self, key):
         
+        ## Stating the valid keys the player can input
         valid_keys = ["Up", "Down", "Left", "Right"]
-        ## check if valid key in dict
+        
+        
+        ## Checking the validity of the key input
         if (
-                key in valid_keys 
-                and self.forbidden_actions[self.heading] != key
+            key in valid_keys 
+            and self.forbidden_actions[self.heading] != key
             ):
             return True
         else:
             return False
     
     # JADEN
+    
+    ## Clicking lets the player play the game again
     def mouse_input(self, event):
         self.play_again()
 
-     # JADEN
+    # JADEN
+     
+    ## User input for the movement of the snake
     def key_input(self, event):
+        
+        ## If the snake has not collided with anything, the direction the snake will move will be based on the user input
         if not self.crashed:
             key_pressed = event.keysym
-            # print(key_pressed)
-
+            
+            ## Checking the validity of the user input
             if self.check_if_key_valid(key_pressed):
                 
-                ## only start game if user is ready and presses valid key
+                ## Only start the game if the user is ready, and a valid key is inputted
                 self.begin = True
-                ## updates last key only when valid
+                
+                ## Updates the last key only when it is valid
                 self.last_key = key_pressed
 
 
