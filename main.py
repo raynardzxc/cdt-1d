@@ -370,18 +370,22 @@ class MakanTime:
         tail = self.snake[0]
         head = self.snake[-1]
 
-        ## prevent snake from growing without eating anything
+        ## Preventing the snake from growing without eating food
         if head != self.old_food_cell:
             self.snake.pop(0)
 
-        ## reduce length of snake if it eats poison
+        ## Reducing the length of the snake if it eats poison
         if head == self.old_poison_cell:
+            
+            ## If the length of the snake is 0, then the game is lost
             if len(self.snake) == 0: 
                 self.crashed = True
+                
+            ## Else, the length of the snake will be reduced by 1
             else: 
                 self.snake.pop(0)
           
-        ## append new head depending on direction of movement
+        ## Appending the head depending on the direction the snake is heading
         if key == "Up":
             self.snake.append((head[0], head[1] - 1))
         elif key == "Down":
@@ -390,42 +394,50 @@ class MakanTime:
             self.snake.append((head[0] - 1, head[1]))
         elif key == "Right":
             self.snake.append((head[0] + 1, head[1]))
-          
-
+        
         head = self.snake[-1]
+        
+        ## If the snake exceeds the board or collides with itself, the game is also lost
         if (
-            ## exceed right side of border
+            ## Right side of border
             head[0] > COLS - 1
-            ## exceed left side of border
+            
+            ## Left side of border
             or head[0] < 0
-            ## exceed top side of border
+            
+            ## Top side of border
             or head[1] > ROWS - 1
-            ## exceed bottom side of border
+            
+            ## Bottom side of border
             or head[1] < 0
-            ## head hits walls
+            
+            ## Head of snake hits the walls
             or head in set(self.previous_wall_cells)
-            ## if len not equal means snake body part overlaps
+            
+            ## If the snake body overlaps with itself
             or len(set(self.snake)) != len(self.snake)
-            ## 0 body parts left
+            
+            ## 0 Body Parts
             or len(self.snake) <= 0
           ):
-            
-            # hit border/ own body/ or no more body
             self.crashed = True
-
+        
+        ## Process of eating food
         elif head == self.food_cell:
             
-            # eat food
+            ## Snake in the midst of eating food
             self.old_food_cell = self.food_cell
+            
+            ## Removing the food object from the board
             self.canvas.delete(self.food_obj)
             self.place_food()
 
-               if random.choice([0,1])==1:
+            if random.choice([0,1])==1:
                     self.place_wall()
-               else:
-                    pass
+            else:
+                pass
 
-               self.display_snake()
+            self.display_snake()
 
         elif head == self.poison_cell:
             
@@ -462,10 +474,10 @@ class MakanTime:
         self.play_again()
 
      # JADEN
-     def key_input(self, event):
-          if not self.crashed:
-               key_pressed = event.keysym
-               # print(key_pressed)
+    def key_input(self, event):
+        if not self.crashed:
+            key_pressed = event.keysym
+            # print(key_pressed)
 
             if self.check_if_key_valid(key_pressed):
                 
