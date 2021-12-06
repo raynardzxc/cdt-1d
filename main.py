@@ -7,9 +7,9 @@ import random
 
 # Setting the size of the board
 
-GAME_WIDTH = 1000
-GAME_HEIGHT = 1000
-SPACE_SIZE = 100
+GAME_WIDTH = 700
+GAME_HEIGHT = 700
+SPACE_SIZE = 50
 
 # Getting rows and columns from the board size for objects (eg. snake)
 
