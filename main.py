@@ -56,7 +56,7 @@ class MakanTime:
         self.window.bind("<Key>", self.key_input)
         self.window.bind("<Button-1>", self.mouse_input)
           
-        ## function to reset the game
+        ## Running the game for the first time
         self.play_again()
           
         ## Start the game only when the user has input a key
