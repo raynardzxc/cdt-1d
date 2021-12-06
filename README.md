@@ -2,7 +2,7 @@
 
 This repository contains the code for the python implmentation "The Makan Time" game. This game was created for the 1D component of the Computational Thinking for Design course at the Singapore University of Technology and Design.
 
-## <ins>_About Makan-Time_</ins>
+## <ins>_**About Makan-Time**_</ins>
 This game is a spin off from the traditional Snake-And-Apple game aimed at encouraging young children to eat their vegetables while discouraging them from snacking on unhealthy foods.
 
 The game begins with a snake that grows in length when eating vegetables (green circles) while losing length when eating potato chips (yellow blocks). 
@@ -15,13 +15,13 @@ Children in particular love to play games, thus inculcating good eating habits v
 
 This game is also suitable for people of any age group as it can be an enjoyable way to train their reflexes.
 
-## <ins>_Installing Makan-Time_</ins>
+## <ins>_**Installing Makan-Time**_</ins>
 
 ```
 git clone https://github.com/raynard/cdt-1d.git
 ```
 
-## <ins>_Running Makan-Time_</ins>
+## <ins>_**Running Makan-Time**_</ins>
 ---
 ```
 cd cdt-1d
@@ -32,14 +32,14 @@ python main.py
 <img src="/src/preview.gif">
 </p>
 
-## <ins>_Controls_</ins>
+## <ins>_**Controls**_</ins>
 
 1. The game begins with a snake of length 3 and will only start when the user presses a valid key (all the arrow keys.)
 2. Keyboard Up, Down, Left, and Right are used to control the snake.
 3. The final result is displayed at the end of the game.
 4. Click anywhere on the result screen to play again.
 
-## <ins>_Documentation_<ins>
+## <ins>_**Documentation**_<ins>
 
 This game utilises the "random" and "tkinter" library.
 
@@ -58,6 +58,7 @@ The functions within the game are split into 4 categories.
 ---
 
 #### <ins>_**Main Characteristics of the Game**_</ins>
+
 `def __init__()`
 
 This special method of the class serves as the basis of the game itself.
@@ -71,6 +72,7 @@ We then bind the player's key and mouse input to `self.window`, and set the game
 ---
 
 #### <ins>_**Creation of the Main Game Board**_</ins>
+
 `def initialise_board()`
 
 This function creates the board for the game to be played.
@@ -82,6 +84,8 @@ We then initialize the display and coordinates of the 3 main objects: `food`, `p
 We then proceeded to create the coordinates and grids of the board, using `.append()` and `.create_line()` methods and the game height, game width, the rows and columns of the grid.
 
 ---
+
+#### <ins>_**Creation of the Snake**_</ins>
 
 `def initialise_snake()`
 
@@ -101,15 +105,23 @@ Then, we create an empty list for the display of the snake to be used later, and
 
 ---
 
+#### <ins>_**Creation of "Play Again" function**_</ins>
+
 `def play_again()`
 
-This function initializes a new board and snake using initialize_board() and initialize_snake() methods. Food and poison gets placed on the board randomly using place_food and place_poison methods. The initial state of the snake is displayed on the board using the display_snake method().
+This function initializes a new board and snake using `initialize_board()` and `initialize_snake()` methods. 
+
+Food and poison gets placed on the board randomly using `place_food()` and `place_poison()` methods. 
+
+The initial state of the snake is displayed on the board using the `display_snake method()`.
 
 ---
 
+#### <ins>_**Main Flow of the Game**_</ins>
+
 `def mainloop()`
 
-This function ensures that the game goes on as long as the snake doesnt collide with itslef or the walls. When a collision occurs, 'game over' is displayed using the display_gameover() method.
+This function ensures that the game goes on as long as the snake doesnt collide with itslef or the walls. When a collision occurs, 'game over' is displayed using the `display_gameover()` method.
 
 ---
 
@@ -117,37 +129,57 @@ This function ensures that the game goes on as long as the snake doesnt collide 
 
 ---
 
+#### <ins>_**Creation of the "Game Over" Screen**_</ins>
+
 `def display_gameover()`
 
-The game over screen is designed using create_text() and font,fill,text parameters under this function.
+The game over screen is designed using `create_text()`, with font, fill, and text parameters under this function.
 
 ---
 
-#### <ins>_**Creating of random food location**_</ins>
+#### <ins>_**Creation of Random Food Location**_</ins>
+
 `def place_food()`
 
+This function does the following:
+
 1. Create the list of unoccupied spaces in the grid by removing coordinates of the snake, poison and walls
+
 2. Chose a random index in the list of unoccupied spaces and assign it to the food cell
+
 3. Extracts the X and Y positions from the randomized index from the unoccupied spaces list
+
 4. Create an oval shape using canvas with green colour to represents the vegetables in the game with a dark green outline at the randomized X and Y coordinates with and high        stretching to 5 units.
 
 ---
 
-#### <ins>_**Creating of random poison location**_</ins>
+#### <ins>_**Creation of Random Poison Location**_</ins>
+
 `def place_poison()`
 
+This function does the following
+
 1. Create the list of unoccupied spaces in the grid by removing coordinates of the snake, food and walls
+
 2. Chose a random index in the list of unoccupied spaces and assign it to the food cell
+
 3. Extract the X and Y positions from the randomized index from the unoccupied spaces list
+
 4. Create an rectangle shape using canvas with yellow colour to represents the unhealthy in the game with a orange outline at the randomized X and Y coordinates with the with of    with and high stretching to 5 units.
 
 ---
-#### <ins>_**Creating of random wall location**_</ins>
+#### <ins>_**Creation of Random Wall Location**_</ins>
+
 `def place_wall()`
 
-This function displays a wall randomly on the canvas as the game progresses. The function takes into account the list of unoccupied cells and randomly chooses one of the cells to spawn the wall. The location of the new wall spawned will then be removed from the list of unoccupied cells.
+This function displays a wall randomly on the canvas everytime the snake consumes the food. 
+
+The function takes into account the list of unoccupied cells `unoccupied_cells` and randomly chooses one of the cells to spawn the wall. 
+
+The location of the new wall spawned will then be removed from the list of unoccupied cells.
 
 ---
+#### <ins>_**Display of the Snake on the Board**_</ins>
 
 `def display_snake()`
 
@@ -171,7 +203,10 @@ For 4, the function will remove the tail and add a new head in the direction of 
 
 ---
 
+#### <ins>_**Updating the Snake as the Game Progresses**_</ins>
+
 `def update_snake()` 
+
 This function is the main logic for the game that is run at every step/frame of the game. The function takes a variable `key` from the user input and this decides the direction the snake will travel at the next step.
 
 Within the function, there are also checks for the different situations the snake may encounter which are:
@@ -196,6 +231,8 @@ For 6, the snake will just continue to the next step/frame.
 
 ---
 
+#### <ins>_**Validity of the Player's Key Inputs**_</ins>
+
 `def check_if_key_valid()`
 
 This function ensures that the snake will change to move in a possible direction (either perpendicularly left or right from its current heading direction), when the correct button is pressed to change the direction of the snake.
@@ -204,11 +241,15 @@ A list of valid keys is created to check against when the player presses a key o
 
 ---
 
+#### <ins>_**"Play Again" Prompt from the Player**_</ins>
+
 `def mouse_input()`
 
 When the player clicks the left-mouse button, the game will restart from the beginning, via calling the function `play_again()` which deletes the current game canvas and reinitialize a new game canvas with the snake, food and poison.
 
 ---
+
+#### <ins>_**Main Key Input of the Player**_</ins>
 
 `def key_input()`
 
