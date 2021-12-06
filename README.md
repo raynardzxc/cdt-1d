@@ -75,13 +75,13 @@ description
 
 `def play_again()`
 
-description
+This function initializes a new board and snake using initialize_board() and initialize_snake() methods. Food and poison gets placed on the board randomly using place_food and place_poison methods. The initial state of the snake is displayed on the board using the display_snake method().
 
 ---
 
 `def mainloop()`
 
-description
+This function ensures that the game goes on as long as the snake doesnt collide with itslef or the walls. When a collision occurs, 'game over' is displayed using the display_gameover() method.
 
 ---
 ---
@@ -90,12 +90,12 @@ description
 
 `def display_gameover()`
 
-description
+The game over screen is designed using create_text() under this function.
 
 ---
 
 ### Creating of random food location
-`def place_food(self)`
+`def place_food()`
 
 1. Create the list of unoccupied spaces in the grid by removing coordinates of the snake, poison and walls
 2. Chose a random index in the list of unoccupied spaces and assign it to the food cell
@@ -105,12 +105,12 @@ description
 ---
 
 ### Creating of random poison location
-`def place_poison(self)`
+`def place_poison()`
 
 1. Create the list of unoccupied spaces in the grid by removing coordinates of the snake, food and walls
-2. chose a random index in the list of unoccupied spaces and assign it to the food cell
-3. extract the X and Y positions from the randomized index from the unoccupied spaces list
-4. create an rectangle shape using canvas with yellow colour to represents the unhealthy in the game with a orange outline at the randomized X and Y coordinates with the with of    with and high stretching to 5 units.
+2. Chose a random index in the list of unoccupied spaces and assign it to the food cell
+3. Extract the X and Y positions from the randomized index from the unoccupied spaces list
+4. Create an rectangle shape using canvas with yellow colour to represents the unhealthy in the game with a orange outline at the randomized X and Y coordinates with the with of    with and high stretching to 5 units.
 
 ---
 ### Creating of random wall location
