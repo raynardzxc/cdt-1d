@@ -273,23 +273,25 @@ class MakanTime:
                         )
                     )
         
-        ## Else, 
+        ## Else, the snake will "move" by appending a "new head" in front of the snake body
         else:
             
-            ## new head
+            ## Creation of the new head
             head = self.snake[-1]
             x = head[0] * SPACE_SIZE
             y = head[1] * SPACE_SIZE
 
-            ## append new head to snake
+            ## Appending the new head to the snake
             self.snake_objects.append(
                 self.canvas.create_rectangle(
                     x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=SNAKE_COLOR, outline=SNAKE_OUTLINE_COLOR, width=5, tag="head"
                     )
                 )
+            
+            ## If the cell occupied by the snake is also occupied by the food, add the body size of the snake
             if head == self.old_food_cell:
                 
-                ## insert new cell at tail
+                ## Appending the new tail when the snake has "eaten" the food
                 self.snake.insert(0, self.old_food_cell)
                 self.old_food_cell = []
                 tail = self.snake[0]
@@ -300,107 +302,117 @@ class MakanTime:
                         x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=SNAKE_COLOR, outline=SNAKE_OUTLINE_COLOR, width=5, tag="new tail"
                         )
                     )
+                
+            ## If the cell occupied by the snake is also occupied by the poison, reduce the body size of the snake
             elif head == self.old_poison_cell:
-                ## delete tail
+                
+                ## Deleting the tail using the .pop() function
                 self.canvas.delete(self.snake_objects.pop(0))
-
+        
+        ## Keep updating the board as the snake "moves"
         self.window.update()
 
-     # -------------------------------------------------
-     # Game Logic Function
-     # -------------------------------------------------
+    # -------------------------------------------------
+    # Game Logic Function
+    # -------------------------------------------------
      
-     # RAYNARD
-    def update_snake(self, key):
+    # RAYNARD
+    def update_snake(self, key):        ## 
+        
+        tail = self.snake[0]
+        head = self.snake[-1]
    
-         tail = self.snake[0]
-         head = self.snake[-1]
-   
-         ## prevent snake from growing without eating anything
-         if tail != self.old_food_cell:
-              self.snake.pop(0)
-   
-         ## reduce length of snake if it eats poison
-         if head == self.old_poison_cell:
-              if len(self.snake) == 0: self.crashed = True
-              else: self.snake.pop(0)
-         
-         ## append new head depending on direction of movement
-         if key == "Up":
-              self.snake.append((head[0], head[1] - 1))
-         elif key == "Down":
-              self.snake.append((head[0], head[1] + 1))
-         elif key == "Left":
-              self.snake.append((head[0] - 1, head[1]))
-         elif key == "Right":
-              self.snake.append((head[0] + 1, head[1]))
-         
-   
-         head = self.snake[-1]
-         if (
-              ## exceed right side of border
-              head[0] > COLS - 1
-              ## exceed left side of border
-              or head[0] < 0
-              ## exceed top side of border
-              or head[1] > ROWS - 1
-              ## exceed bottom side of border
-              or head[1] < 0
-              ## head hits walls
-              or head in set(self.previous_wall_cells)
-              ## if len not equal means snake body part overlaps
-              or len(set(self.snake)) != len(self.snake)
-              ## 0 body parts left
-              or len(self.snake) <= 0
-         ):
-              # hit border/ own body/ or no more body
-              self.crashed = True
-   
-         elif head == self.food_cell:
-              # eat food
-              self.old_food_cell = self.food_cell
-              self.canvas.delete(self.food_obj)
-              self.place_food()
-              self.place_wall()
-              self.display_snake()
-   
-         elif head == self.poison_cell:
-              # eat poison
-              self.old_poison_cell = self.poison_cell
-              self.canvas.delete(self.poison_obj)
-              self.place_poison()
-              self.display_snake()
-         else:
-              self.heading = key
-              self.display_snake()
+        ## prevent snake from growing without eating anything
+        if tail != self.old_food_cell:
+            self.snake.pop(0)
 
-     # -------------------------------------------------
-     # Input Functions
-     # -------------------------------------------------
+        ## reduce length of snake if it eats poison
+        if head == self.old_poison_cell:
+            if len(self.snake) == 0: self.crashed = True
+            else: self.snake.pop(0)
+         
+        ## append new head depending on direction of movement
+        if key == "Up":
+            self.snake.append((head[0], head[1] - 1))
+        elif key == "Down":
+            self.snake.append((head[0], head[1] + 1))
+        elif key == "Left":
+            self.snake.append((head[0] - 1, head[1]))
+        elif key == "Right":
+            self.snake.append((head[0] + 1, head[1]))
+         
+   
+        head = self.snake[-1]
+        if (
+            ## exceed right side of border
+            head[0] > COLS - 1
+            ## exceed left side of border
+            or head[0] < 0
+            ## exceed top side of border
+            or head[1] > ROWS - 1
+            ## exceed bottom side of border
+            or head[1] < 0
+            ## head hits walls
+            or head in set(self.previous_wall_cells)
+            ## if len not equal means snake body part overlaps
+            or len(set(self.snake)) != len(self.snake)
+            ## 0 body parts left
+            or len(self.snake) <= 0
+        ):
+            
+            # hit border/ own body/ or no more body
+            self.crashed = True
+   
+        elif head == self.food_cell:
+            
+            # eat food
+            self.old_food_cell = self.food_cell
+            self.canvas.delete(self.food_obj)
+            self.place_food()
+            self.place_wall()
+            self.display_snake()
+   
+        elif head == self.poison_cell:
+            # eat poison
+            self.old_poison_cell = self.poison_cell
+            self.canvas.delete(self.poison_obj)
+            self.place_poison()
+            self.display_snake()
+        else:
+            self.heading = key
+            self.display_snake()
 
-     # JADEN
+    # -------------------------------------------------
+    # Input Functions
+    # -------------------------------------------------
+
+    # JADEN
     def check_if_key_valid(self, key):
-       valid_keys = ["Up", "Down", "Left", "Right"]
-       ## check if valid key in dict
-       if key in valid_keys and self.forbidden_actions[self.heading] != key:
-           return True
-       else:
-           return False
+        
+        valid_keys = ["Up", "Down", "Left", "Right"]
+        ## check if valid key in dict
+        if key in valid_keys and self.forbidden_actions[self.heading] != key:
+            return True
+        else:
+            return False
     
     # JADEN
     def mouse_input(self, event):
-         self.play_again()
+        self.play_again()
 
     # JADEN
     def key_input(self, event):
-         if not self.crashed:
-              key_pressed = event.keysym
+        
+        if not self.crashed:
+            
+            key_pressed = event.keysym
 
-              if self.check_if_key_valid(key_pressed):
-                   ## only start game if user is ready and presses valid key
-                   self.begin = True
-                   ## updates last key only when valid
-                   self.last_key = key_pressed
+            if self.check_if_key_valid(key_pressed):
+                
+                ## only start game if user is ready and presses valid key
+                self.begin = True
+                ## updates last key only when valid
+                self.last_key = key_pressed
 
 
 game = MakanTime()
