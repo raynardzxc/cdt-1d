@@ -5,12 +5,18 @@ import random
 # Global Constants
 # -------------------------------------------------
 
+# Setting the size of the board
+
 GAME_WIDTH = 1000
 GAME_HEIGHT = 1000
 SPACE_SIZE = 100
 
+# Getting rows and columns from the board size for objects (eg. snake)
+
 ROWS = int(GAME_HEIGHT/SPACE_SIZE)
 COLS = int(GAME_WIDTH/SPACE_SIZE)
+
+# Initializing the characteristics of the game
 
 SPEED = 150
 BODY_PARTS = 3
@@ -151,7 +157,7 @@ class MakanTime:
 
      # MALCOM
      def place_food(self):
-          unoccupied_cells = set(self.board) - set(self.snake) - set(self.old_poison_cell) - set(self.previous_wall_cells)
+          unoccupied_cells = set(self.board) - set(self.snake) - set(self.old_food_cell) - set(self.old_poison_cell) - set(self.previous_wall_cells)
           self.food_cell = random.choice(list(unoccupied_cells))
           x = self.food_cell[0] * SPACE_SIZE
           y = self.food_cell[1] * SPACE_SIZE
@@ -161,7 +167,7 @@ class MakanTime:
 
      # MALCOM
      def place_poison(self):
-          unoccupied_cells = set(self.board) - set(self.snake) - set(self.old_food_cell) - set(self.previous_wall_cells)
+          unoccupied_cells = set(self.board) - set(self.snake) - set(self.old_food_cell) - set(self.old_poison_cell) - set(self.previous_wall_cells)
           self.poison_cell = random.choice(list(unoccupied_cells))
           x = self.poison_cell[0] * SPACE_SIZE
           y = self.poison_cell[1] * SPACE_SIZE
