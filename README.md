@@ -90,7 +90,7 @@ This function ensures that the game goes on as long as the snake doesnt collide 
 
 `def display_gameover()`
 
-The game over screen is designed using create_text() under this function.
+The game over screen is designed using create_text() and font,fill,text parameters under this function.
 
 ---
 
