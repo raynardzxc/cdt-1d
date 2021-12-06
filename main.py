@@ -7,9 +7,9 @@ import random
 
 ## Setting the size of the board
 
-GAME_WIDTH = 1000
-GAME_HEIGHT = 1000
-SPACE_SIZE = 100
+GAME_WIDTH = 700
+GAME_HEIGHT = 700
+SPACE_SIZE = 50
 
 ## Getting rows and columns from the board size for objects (eg. snake)
 
@@ -316,6 +316,7 @@ class MakanTime:
     # Game Logic Function
     # -------------------------------------------------
      
+<<<<<<< HEAD
     # RAYNARD
     def update_snake(self, key):        ## 
         
@@ -381,6 +382,76 @@ class MakanTime:
         else:
             self.heading = key
             self.display_snake()
+=======
+     # RAYNARD
+     def update_snake(self, key):
+
+          tail = self.snake[0]
+          head = self.snake[-1]
+
+          ## prevent snake from growing without eating anything
+          if tail != self.old_food_cell:
+               self.snake.pop(0)
+
+          ## reduce length of snake if it eats poison
+          if head == self.old_poison_cell:
+               if len(self.snake) == 0: self.crashed = True
+               else: self.snake.pop(0)
+          
+          ## append new head depending on direction of movement
+          if key == "Up":
+               self.snake.append((head[0], head[1] - 1))
+          elif key == "Down":
+               self.snake.append((head[0], head[1] + 1))
+          elif key == "Left":
+               self.snake.append((head[0] - 1, head[1]))
+          elif key == "Right":
+               self.snake.append((head[0] + 1, head[1]))
+          
+
+          head = self.snake[-1]
+          if (
+               ## exceed right side of border
+               head[0] > COLS - 1
+               ## exceed left side of border
+               or head[0] < 0
+               ## exceed top side of border
+               or head[1] > ROWS - 1
+               ## exceed bottom side of border
+               or head[1] < 0
+               ## head hits walls
+               or head in set(self.previous_wall_cells)
+               ## if len not equal means snake body part overlaps
+               or len(set(self.snake)) != len(self.snake)
+               ## 0 body parts left
+               or len(self.snake) <= 0
+          ):
+               # hit border/ own body/ or no more body
+               self.crashed = True
+
+          elif head == self.food_cell:
+               # eat food
+               self.old_food_cell = self.food_cell
+               self.canvas.delete(self.food_obj)
+               self.place_food()
+
+               if random.choice([0,1])==1:
+                    self.place_wall()
+               else:
+                    pass
+               
+               self.display_snake()
+
+          elif head == self.poison_cell:
+               # eat poison
+               self.old_poison_cell = self.poison_cell
+               self.canvas.delete(self.poison_obj)
+               self.place_poison()
+               self.display_snake()
+          else:
+               self.heading = key
+               self.display_snake()
+>>>>>>> dev
 
     # -------------------------------------------------
     # Input Functions
