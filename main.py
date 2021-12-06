@@ -371,7 +371,7 @@ class MakanTime:
         head = self.snake[-1]
 
         ## prevent snake from growing without eating anything
-        if tail != self.old_food_cell:
+        if head != self.old_food_cell:
             self.snake.pop(0)
 
         ## reduce length of snake if it eats poison
