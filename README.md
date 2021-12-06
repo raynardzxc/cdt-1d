@@ -161,17 +161,21 @@ For 6, the snake will just continue to the next step/frame.
 
 This function ensures that the snake will change to move in a possible direction (either perpendicularly left or right from its current heading direction), when the correct button is pressed to change the direction of the snake.
 
+A list of valid keys is created to check against when the player presses a key on the keyboard. If the player presses a key that is an element of the list valid_keys, and that it is also not a forbidden_action, the snake will turn in that keyed in direction. If not the snake will continue its direction of motion.
+
 ---
 
 `def mouse_input()`
 
-When the player clicks the left-mouse button, the game will restart from the beginning.
+When the player clicks the left-mouse button, the game will restart from the beginning, via calling the function play_again() which deletes the current game canvas and reinitialize a new game canvas with the snake, food and poison.
 
 ---
 
 `def key_input()`
 
 This function gives the player the ability to move the snake around. To start the game, the user must press either the down or right arrow key. Up key is not possible as it is a forbidden action our code has took into account to ensure the snake would not immediately eat itself. The left arrow key is not advised to be pressed to start the game as it will cause the snake to crash into the wall, thus ending the game.
+
+
 
 ---
 

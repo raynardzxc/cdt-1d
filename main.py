@@ -420,13 +420,12 @@ class MakanTime:
             self.canvas.delete(self.food_obj)
             self.place_food()
 
-            if random.choice([0,1])==1:
-                
-                self.place_wall()
-            else:
-                pass
-               
-            self.display_snake()
+               if random.choice([0,1])==1:
+                    self.place_wall()
+               else:
+                    pass
+
+               self.display_snake()
 
         elif head == self.poison_cell:
             
@@ -462,12 +461,11 @@ class MakanTime:
     def mouse_input(self, event):
         self.play_again()
 
-    # JADEN
-    def key_input(self, event):
-        
-        if not self.crashed:
-            
-            key_pressed = event.keysym
+     # JADEN
+     def key_input(self, event):
+          if not self.crashed:
+               key_pressed = event.keysym
+               # print(key_pressed)
 
             if self.check_if_key_valid(key_pressed):
                 
