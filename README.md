@@ -102,6 +102,8 @@ description
 3. Extracts the X and Y positions from the randomized index from the unoccupied spaces list
 4. Create an oval shape using canvas with green colour to represents the vegetables in the game with a dark green outline at the randomized X and Y coordinates with and high        stretching to 5 units.
 
+---
+
 ### Creating of random poison location
 `def place_poison(self)`
 
