@@ -287,7 +287,12 @@ class MakanTime:
                self.old_food_cell = self.food_cell
                self.canvas.delete(self.food_obj)
                self.place_food()
-               self.place_wall()
+
+               if random.choice([0,1])==1:
+                    self.place_wall()
+               else:
+                    pass
+               
                self.display_snake()
 
           elif head == self.poison_cell:
