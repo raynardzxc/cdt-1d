@@ -94,18 +94,24 @@ description
 
 ---
 
-`def place_food()`
+### Creating of random food location
+`def place_food(self)`
 
-description
+1. Create the list of unoccupied spaces in the grid by removing coordinates of the snake, poison and walls
+2. Chose a random index in the list of unoccupied spaces and assign it to the food cell
+3. Extracts the X and Y positions from the randomized index from the unoccupied spaces list
+4. Create an oval shape using canvas with green colour to represents the vegetables in the game with a dark green outline at the randomized X and Y coordinates with and high        stretching to 5 units.
+
+### Creating of random poison location
+`def place_poison(self)`
+
+1. Create the list of unoccupied spaces in the grid by removing coordinates of the snake, food and walls
+2. chose a random index in the list of unoccupied spaces and assign it to the food cell
+3. extract the X and Y positions from the randomized index from the unoccupied spaces list
+4. create an rectangle shape using canvas with yellow colour to represents the unhealthy in the game with a orange outline at the randomized X and Y coordinates with the with of    with and high stretching to 5 units.
 
 ---
-
-`def place_poison()`
-
-description
-
----
-
+### Creating of random wall location
 `def place_wall()`
 
 This function displays a wall randomly on the canvas as the game progresses. The function takes into account the list of unoccupied cells and randomly chooses one of the cells to spawn the wall. The location of the new wall spawned will then be removed from the list of unoccupied cells.
@@ -181,21 +187,6 @@ The function `check_if_key_valid` ensures the snake only begins moving when the 
 
 ---
 
-### Creating of random food location
-`def place_food(self)`
-
-1. Create the list of unoccupied spaces in the grid by removing coordinates of the snake, poison and walls
-2. Chose a random index in the list of unoccupied spaces and assign it to the food cell
-3. Extracts the X and Y positions from the randomized index from the unoccupied spaces list
-4. Create an oval shape using canvas with green colour to represents the vegetables in the game with a dark green outline at the randomized X and Y coordinates with and high        stretching to 5 units.
-
-### Creating of random poison location
-`def place_poison(self)`
-
-1. Create the list of unoccupied spaces in the grid by removing coordinates of the snake, food and walls
-2. chose a random index in the list of unoccupied spaces and assign it to the food cell
-3. extract the X and Y positions from the randomized index from the unoccupied spaces list
-4. create an rectangle shape using canvas with yellow colour to represents the unhealthy in the game with a orange outline at the randomized X and Y coordinates with the with of    with and high stretching to 5 units.
 
 ## Members
 Chai Yu Cheng, Raynard (1003436)
