@@ -86,11 +86,17 @@ class MakanTime:
         ## Drawing lines to create grids for both rows and columns
         for i in range(ROWS):
             self.canvas.create_line(
-                i * GAME_WIDTH / ROWS, 0, i * GAME_WIDTH / ROWS, GAME_WIDTH,
+                i * GAME_WIDTH / ROWS, 
+                0, 
+                i * GAME_WIDTH / ROWS, 
+                GAME_WIDTH,
                 )
         for i in range(COLS):
             self.canvas.create_line(
-                0, i * GAME_HEIGHT / COLS, GAME_HEIGHT, i * GAME_HEIGHT / COLS,
+                0, 
+                i * GAME_HEIGHT / COLS,
+                GAME_HEIGHT, 
+                i * GAME_HEIGHT / COLS,
                 )
      
     # DARRYL
@@ -215,7 +221,14 @@ class MakanTime:
         x = self.food_cell[0] * SPACE_SIZE
         y = self.food_cell[1] * SPACE_SIZE
         self.food_obj = self.canvas.create_oval(
-            x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=GREEN_COLOR, outline=DARK_GREEN_COLOR, width=5, tag="food"
+            x, 
+            y, 
+            x+SPACE_SIZE, 
+            y+SPACE_SIZE, 
+            fill=GREEN_COLOR, 
+            outline=DARK_GREEN_COLOR, 
+            width=5, 
+            tag="food"
             )
 
     # MALCOM
@@ -231,7 +244,14 @@ class MakanTime:
         x = self.poison_cell[0] * SPACE_SIZE
         y = self.poison_cell[1] * SPACE_SIZE
         self.poison_obj = self.canvas.create_rectangle(
-            x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=YELLOW_COLOR, outline=ORANGE_COLOR, width=5, tag="poison"
+            x, 
+            y, 
+            x+SPACE_SIZE, 
+            y+SPACE_SIZE, 
+            fill=YELLOW_COLOR, 
+            outline=ORANGE_COLOR, 
+            width=5, 
+            tag="poison"
             )
 
     # JADEN
@@ -247,7 +267,14 @@ class MakanTime:
         x = self.wall_cell[0] * SPACE_SIZE
         y = self.wall_cell[1] * SPACE_SIZE
         self.wall_obj = self.canvas.create_rectangle(
-            x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=BLACK_COLOR, outline=BLACK_COLOR, width=5, tag="wall"
+            x, 
+            y, 
+            x+SPACE_SIZE, 
+            y+SPACE_SIZE, 
+            fill=BLACK_COLOR, 
+            outline=BLACK_COLOR, 
+            width=5, 
+            tag="wall"
             )
         
         ## Making the walls stay on the board without disappearing
@@ -269,7 +296,14 @@ class MakanTime:
                 y = cell[1] * SPACE_SIZE
                 self.snake_objects.append(
                     self.canvas.create_rectangle(
-                        x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=SNAKE_COLOR, outline=SNAKE_OUTLINE_COLOR, width=5, tag="body"
+                        x, 
+                        y, 
+                        x+SPACE_SIZE, 
+                        y+SPACE_SIZE, 
+                        fill=SNAKE_COLOR, 
+                        outline=SNAKE_OUTLINE_COLOR, 
+                        width=5, 
+                        tag="body"
                         )
                     )
         
@@ -284,7 +318,14 @@ class MakanTime:
             ## Appending the new head to the snake
             self.snake_objects.append(
                 self.canvas.create_rectangle(
-                    x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=SNAKE_COLOR, outline=SNAKE_OUTLINE_COLOR, width=5, tag="head"
+                    x, 
+                    y, 
+                    x+SPACE_SIZE, 
+                    y+SPACE_SIZE, 
+                    fill=SNAKE_COLOR, 
+                    outline=SNAKE_OUTLINE_COLOR, 
+                    width=5, 
+                    tag="head"
                     )
                 )
             
@@ -299,7 +340,14 @@ class MakanTime:
                 y = tail[1] * SPACE_SIZE
                 self.snake_objects.append(
                     self.canvas.create_rectangle(
-                        x, y, x+SPACE_SIZE, y+SPACE_SIZE, fill=SNAKE_COLOR, outline=SNAKE_OUTLINE_COLOR, width=5, tag="new tail"
+                        x, 
+                        y, 
+                        x+SPACE_SIZE, 
+                        y+SPACE_SIZE, 
+                        fill=SNAKE_COLOR, 
+                        outline=SNAKE_OUTLINE_COLOR, 
+                        width=5, 
+                        tag="new tail"
                         )
                     )
                 
@@ -328,8 +376,10 @@ class MakanTime:
 
         ## reduce length of snake if it eats poison
         if head == self.old_poison_cell:
-            if len(self.snake) == 0: self.crashed = True
-            else: self.snake.pop(0)
+            if len(self.snake) == 0: 
+                self.crashed = True
+            else: 
+                self.snake.pop(0)
           
         ## append new head depending on direction of movement
         if key == "Up":
@@ -400,7 +450,10 @@ class MakanTime:
         
         valid_keys = ["Up", "Down", "Left", "Right"]
         ## check if valid key in dict
-        if key in valid_keys and self.forbidden_actions[self.heading] != key:
+        if (
+                key in valid_keys 
+                and self.forbidden_actions[self.heading] != key
+            ):
             return True
         else:
             return False
