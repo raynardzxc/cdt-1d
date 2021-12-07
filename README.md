@@ -257,6 +257,12 @@ This function gives the player the ability to move the snake around. To start th
 
 `event.keysym` converts the button pressed by the user into a string, which is then passed into `check_if_key_valid`.
 
+Tkinter keysym recognition: 
+
+```
+https://www.tcl.tk/man/tcl8.4/TkCmd/keysyms.html
+```
+
 The function `check_if_key_valid` ensures the snake only begins moving when the correct key is pressed (right, left, down), when `check_if_key_valid` returns True, it causes the snake to turn in the specified direction via assigning `last_key` to the new direction, hence turning the snake to head in that direction.
 
 ---
