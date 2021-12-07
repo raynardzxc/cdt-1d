@@ -118,6 +118,7 @@ class MakanTime:
         self.forbidden_actions["Right"] = "Left"
         self.forbidden_actions["Left"] = "Right"
         
+        
         ## Creating list for the display of the snake on the canvas
         self.snake_objects = []
         
